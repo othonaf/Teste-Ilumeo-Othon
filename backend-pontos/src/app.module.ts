@@ -6,6 +6,7 @@ import { Shift } from './entities/shift.entity';
 import { WorkHours } from './entities/workhours.entity';
 import { EmployeeService } from './employee/employee.service';
 import { EmployeeController } from './employee/employee.controller';
+import { EmployeeModule } from './employee/employee.module';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { EmployeeController } from './employee/employee.controller';
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
+      imports: [ConfigModule, EmployeeModule],
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
         host: configService.get<string>('DB_HOST'),

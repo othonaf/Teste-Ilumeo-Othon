@@ -11,6 +11,9 @@ export class Employee {
   id: number;
 
   @Column()
+  cpf: string;
+
+  @Column()
   name: string;
 
   @Column({ unique: true })
