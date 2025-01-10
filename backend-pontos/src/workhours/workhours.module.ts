@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { WorkhoursController } from './workhours.controller';
-import { WorkhoursService } from './workhours.service';
+import { WorkHoursController } from './workhours.controller';
+import { WorkHoursService } from './workhours.service';
+import { WorkHours } from '../entities/workhours.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  controllers: [WorkhoursController],
-  providers: [WorkhoursService]
+  imports: [TypeOrmModule.forFeature([WorkHours])],
+  controllers: [WorkHoursController],
+  providers: [WorkHoursService],
 })
 export class WorkhoursModule {}
